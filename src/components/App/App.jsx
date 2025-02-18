@@ -9,18 +9,16 @@ function App() {
     answer: null,
     votes: [],
     availableVotes: [],
-    _id: null
+    _id: null,
   });
 
-  // useEffect(() => {
-  //   try {
-  //     getAJoke();
-  //   } catch (err) {
-  //     console.log("===============useEffecterroe=====================");
-  //     console.log(err);
-  //     console.log("====================================");
-  //   }
-  // }, []);
+  useEffect(() => {
+    try {
+      getAJoke();
+    } catch (err) {
+      console.log(err);
+    }
+  }, []);
 
   async function getAJoke() {
     const response = await fetchAJoke();
