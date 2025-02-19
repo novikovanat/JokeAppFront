@@ -4,9 +4,7 @@ const RenderJoke = ({
   onVote,
 }) => {
   const submitHandler = (event) => {
-    console.log(event.target.value);
     onVote(event.target.value);
-    console.log(event.currentTarget);
     event.currentTarget.reset();
   };
 

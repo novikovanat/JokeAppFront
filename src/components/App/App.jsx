@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import fetchAJoke from "../../js/fetchAJoke";
+import { getAJoke, postAJoke } from "../../js/requests";
 import RenderJoke from "../RenderJoke/RenderJoke";
 import Button from "../Button/Button";
 
@@ -17,16 +17,32 @@ function App() {
 
   useEffect(() => {
     try {
-      getAJoke();
+      fetchAJoke();
     } catch (err) {
       console.log(err);
     }
   }, []);
 
-  async function getAJoke() {
-    const response = await fetchAJoke();
+  useEffect(() => {
+    if (!vote) {
+      return;
+    }
+    try {
+      voteForAJoke(joke._id, vote);
+    } catch (err) {
+      console.log(err);
+    }
+  }, [vote, joke._id]);
+
+  async function fetchAJoke() {
+    const response = await getAJoke();
     setJoke(response);
     setVote("");
+  }
+
+  async function voteForAJoke(id, emodj) {
+    const response = await postAJoke(id, emodj);
+    setJoke(response);
   }
 
   return (
@@ -35,7 +51,7 @@ function App() {
       {joke.question && (
         <RenderJoke joke={joke} isVoted={vote} onVote={setVote} />
       )}
-      <Button onNext={getAJoke} />
+      <Button onNext={fetchAJoke} />
     </>
   );
 }
