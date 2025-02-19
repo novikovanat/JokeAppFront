@@ -1,3 +1,4 @@
+import css from './RenderJoke.module.css'
 const RenderJoke = ({
   joke: { question, answer, availableVotes },
   isVoted,
@@ -10,8 +11,8 @@ const RenderJoke = ({
 
   const emodjiList = availableVotes.map((emodj, index) => {
     return (
-      <label key={index}>
-        <input
+      <label key={index} className={css.smile}>
+        <input className={css.none}
           type="radio"
           name="emodj"
           value={emodj}
@@ -24,11 +25,11 @@ const RenderJoke = ({
   return (
     <div>
       <div>
-        <p>{question}</p>
-        <p>{answer}</p>
+        <p className={css.jokeQuestion}>{question}</p>
+        <p className={css.jokeAnswer}>{answer}</p>
       </div>
       <form onChange={submitHandler}>
-        <fieldset>{emodjiList}</fieldset>
+        <fieldset className={css.votes}>{emodjiList}</fieldset>
       </form>
     </div>
   );

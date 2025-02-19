@@ -1,0 +1,96 @@
+.jokeQuestion {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10px;
+  position: relative;
+  background: #e91e63;
+  padding: 15px;
+  border-radius: 10px;
+  display: block;
+}
+
+.jokeQuestion:after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 0.813em solid transparent;
+  border-left-color: #e91e63;
+  border-right: 0;
+  border-bottom: 0;
+  margin-top: -0.406em;
+  margin-right: -0.812em;
+}
+
+.jokeAnswer {
+  font-size: 20px;
+  color: #fff;
+  font-style: italic;
+  margin-bottom: 20px;
+  position: relative;
+  background: #2196f3;
+  padding: 15px;
+  border-radius: 10px;
+  display: block;
+}
+
+.jokeAnswer::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 0.813em solid transparent;
+  border-right-color: #009dbd;
+  border-left: 0;
+  border-bottom: 0;
+  margin-top: -0.406em;
+  margin-left: -0.812em;
+}
+.votes {
+  border: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 50px 0;
+}
+.smile {
+  margin: 3px;
+  font-size: 15px;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.smile:hover {
+  background-color: #72398c;
+  font-size: 30px;
+}
+
+.smile input {
+  display: none;
+}
+
+@media screen and (min-width: 375px) {
+  .smile {
+    font-size: 30px;
+  }
+
+  .smile:hover {
+    font-size: 50px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .smile {
+    font-size: 50px;
+  }
+
+  .smile:hover {
+    font-size: 80px;
+  }
+}
