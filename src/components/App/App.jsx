@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import fetchAJoke from "../../js/fetchAJoke";
 import RenderJoke from "../RenderJoke/RenderJoke";
+import Button from "../Button/Button";
 
 function App() {
   const [joke, setJoke] = useState({
@@ -11,6 +12,8 @@ function App() {
     availableVotes: [],
     _id: null,
   });
+
+  const [vote, setVote] = useState("");
 
   useEffect(() => {
     try {
@@ -23,12 +26,16 @@ function App() {
   async function getAJoke() {
     const response = await fetchAJoke();
     setJoke(response);
+    setVote("");
   }
+
   return (
     <>
       <h1>Why so serious?</h1>
-      {joke.question && <RenderJoke joke={joke} />}
-      <button onClick={() => getAJoke()}>Next</button>
+      {joke.question && (
+        <RenderJoke joke={joke} isVoted={vote} onVote={setVote} />
+      )}
+      <Button onNext={getAJoke} />
     </>
   );
 }
